@@ -9,10 +9,11 @@ namespace Severino.ViewModels
     {
         public AboutViewModel()
         {
-            Title = "About";
-            OpenWebCommand = new Command(async () => await Browser.OpenAsync("https://aka.ms/xamarin-quickstart"));
+            
+            Title = "Status";
+            
         }
 
-        public ICommand OpenWebCommand { get; }
+        
     }
 }

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Severino.Views.AboutPage"
+             x:Class="Severino.Views.IndexPage"
              xmlns:vm="clr-namespace:Severino.ViewModels"
              Title="{Binding Title}">
     
@@ -11,7 +11,7 @@
     
     <ContentPage.Resources>
         <ResourceDictionary>
-            <Color x:Key="Accent">#96d1ff</Color>
+            <Color x:Key="Accent">#223344</Color>
         </ResourceDictionary>
     </ContentPage.Resources>
 
