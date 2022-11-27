@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Severino.App">
+             x:Class="Severino.App"
+             >
     <!--
         Define global resources and styles here, that apply to all pages in your app.
     -->
@@ -20,7 +21,7 @@
                             </VisualState>
                             <VisualState x:Name="Disabled">
                                 <VisualState.Setters>
-                                    <Setter Property="BackgroundColor" Value="#223344" />
+                                    <Setter Property="BackgroundColor" Value="#fdfdfd" />
                                 </VisualState.Setters>
                             </VisualState>
                         </VisualStateGroup>

@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+               x:Name="SS"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Severino.ContentViews.Services">
+    <Frame BindingContext="{x:Reference SS}"
+            BackgroundColor="{Binding CardColor}"
+            BorderColor="{Binding BorderColor}">
+
+
+        <Grid>
+         
+            <Frame BorderColor="{Binding BorderColor, FallbackValue='Black'}"
+                   BackgroundColor="{Binding IconBackgroundColor, FallbackValue='Grey'}">
+                <Image Source="{Binding IconImageSource}" />
+            </Frame>
+            <Label Text="{Binding Title, FallbackValue='Card Title'}" />
+            <BoxView BackgroundColor="{Binding BorderColor, FallbackValue='Black'}" />
+            <Label Text="{Binding Title, FallbackValue='Card description text.'}" />
+        </Grid>
+  
+    </Frame>
+</ContentView>
