@@ -15,19 +15,16 @@ namespace Severino.Views
 
             InitializeComponent();
 
-         
-            ListServices.ItemsSource = new string[]
+
+            ListServices.ItemsSource = new Models.Servicos[]
             {
-              "mono",
-              "monodroid",
-              "monotouch",
-              "monorail",
-              "monodevelop",
-              "monotone",
-              "monopoly",
-              "monomodal",
-              "mononucleosis"
+                new Models.Servicos(){ Name = "Hidraulica" , ImageSource =  ImageSource.FromUri(new Uri("https://img.icons8.com/external-vitaliy-gorbachev-lineal-color-vitaly-gorbachev/512/external-plumber-labour-day-vitaliy-gorbachev-lineal-color-vitaly-gorbachev.png"))},
+                new Models.Servicos(){  Name = "Eletrica" , ImageSource =  ImageSource.FromUri(new Uri("https://img.icons8.com/external-vitaliy-gorbachev-lineal-color-vitaly-gorbachev/512/external-plumber-labour-day-vitaliy-gorbachev-lineal-color-vitaly-gorbachev.png"))},
+                new Models.Servicos(){  Name = "Climatizacao"  , ImageSource =  ImageSource.FromUri(new Uri("https://img.icons8.com/external-vitaliy-gorbachev-lineal-color-vitaly-gorbachev/512/external-plumber-labour-day-vitaliy-gorbachev-lineal-color-vitaly-gorbachev.png"))},
+                new Models.Servicos(){  Name = "Jardinagem", ImageSource =  ImageSource.FromUri(new Uri("https://img.icons8.com/external-vitaliy-gorbachev-lineal-color-vitaly-gorbachev/512/external-plumber-labour-day-vitaliy-gorbachev-lineal-color-vitaly-gorbachev.png"))  },
+                new Models.Servicos(){  Name = "Limpeza" , ImageSource =  ImageSource.FromUri(new Uri("https://img.icons8.com/external-vitaliy-gorbachev-lineal-color-vitaly-gorbachev/512/external-plumber-labour-day-vitaliy-gorbachev-lineal-color-vitaly-gorbachev.png")) },
             };
+
         }
     }
 }

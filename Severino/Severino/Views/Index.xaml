@@ -23,11 +23,42 @@
             <Grid >
                 <Grid.RowDefinitions >
                     <RowDefinition  Height="100"/>
+                    <RowDefinition  Height="100"/>
                     <RowDefinition />
                 </Grid.RowDefinitions >
-                <CarouselView   x:Name="ListServices" Grid.Row="0"  FlowDirection="LeftToRight" >
-                    
-                </CarouselView>
+                <Grid/>
+                <CollectionView   x:Name="ListServices" Grid.Row="0"  FlowDirection="LeftToRight"  >
+                    <CollectionView.ItemsLayout>
+
+                        <LinearItemsLayout ItemSpacing="5" Orientation="Horizontal" >
+                            
+                        </LinearItemsLayout>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout>
+                                <Frame HasShadow="True"
+                                   BorderColor="DarkGray"
+                                   CornerRadius="5"
+                                   BackgroundColor="#fedece"
+                                   HeightRequest="40"
+                                   WidthRequest="40"
+                                    >
+                                    <Image Source="{Binding ImageSource}" />
+                                </Frame>
+                               
+                                <Label Text="{Binding Name}"
+                                           FontAttributes="None"
+                                           FontSize="Small"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center" />
+
+                                   
+                               
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
             </Grid>
 
         </ScrollView>
