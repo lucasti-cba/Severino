@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Severino.Views.IndexPage"
              xmlns:controls="clr-namespace:Severino.ContentViews" 
-             xmlns:vm="clr-namespace:Severino.ViewModels"
+             xmlns:vm="clr-namespace:Severino.ViewModels" xmlns:model="clr-namespace:Severino.Models"
              Title="{Binding Title}">
     
     <ContentPage.BindingContext>
@@ -22,43 +22,131 @@
         <ScrollView >
             <Grid >
                 <Grid.RowDefinitions >
+                    <RowDefinition  Height="140"/>
                     <RowDefinition  Height="100"/>
-                    <RowDefinition  Height="100"/>
-                    <RowDefinition />
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions >
                 <Grid/>
-                <CollectionView   x:Name="ListServices" Grid.Row="0"  FlowDirection="LeftToRight"  >
-                    <CollectionView.ItemsLayout>
+                <Grid Grid.Row="0">
+                    <Grid.RowDefinitions >
+                    <RowDefinition  Height="20"/>
+                    <RowDefinition  Height="120"/>
+                    <RowDefinition />
+                    </Grid.RowDefinitions >
+                    <Label Grid.Row="0" Text="Servicos"/>
+                    <CollectionView   x:Name="ListServices" Grid.Row="1"  FlowDirection="LeftToRight"  >
+                        <CollectionView.ItemsLayout>
 
-                        <LinearItemsLayout ItemSpacing="5" Orientation="Horizontal" >
-                            
-                        </LinearItemsLayout>
-                    </CollectionView.ItemsLayout>
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <StackLayout>
-                                <Frame HasShadow="True"
+                            <LinearItemsLayout ItemSpacing="5" Orientation="Horizontal" >
+
+                            </LinearItemsLayout>
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout>
+                                    <Frame HasShadow="True"
                                    BorderColor="DarkGray"
                                    CornerRadius="5"
                                    BackgroundColor="#fedece"
                                    HeightRequest="40"
                                    WidthRequest="40"
                                     >
-                                    <Image Source="{Binding ImageSource}" />
-                                </Frame>
-                               
-                                <Label Text="{Binding Name}"
+                                        <Image Source="{Binding ImageSource}" />
+                                    </Frame>
+
+                                    <Label Text="{Binding Name}"
                                            FontAttributes="None"
                                            FontSize="Small"
                                            HorizontalOptions="Center"
                                            VerticalOptions="Center" />
 
-                                   
-                               
-                            </StackLayout>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
+
+
+                                </StackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions >
+                        <RowDefinition  Height="20"/>
+                        <RowDefinition  Height="120"/>
+                        <RowDefinition />
+                    </Grid.RowDefinitions >
+                    <Label Grid.Row="0" Text="Favoritos"/>
+                    <CollectionView   x:Name="ListLiked" Grid.Row="1"  FlowDirection="LeftToRight"  >
+                        <CollectionView.ItemsLayout>
+
+                            <LinearItemsLayout ItemSpacing="5" Orientation="Horizontal" >
+
+                            </LinearItemsLayout>
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout>
+                                    <Frame HasShadow="True"
+                                   BorderColor="DarkGray"
+                                   CornerRadius="40"
+                                   BackgroundColor="#fedece"
+                                   HeightRequest="20"
+                                   WidthRequest="20"
+                                    >
+                                        <Image Source="{Binding ImageSource}" />
+                                    </Frame>
+
+                                    <Label Text="{Binding Name}"
+                                           FontAttributes="None"
+                                           FontSize="Small"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center" 
+                                          
+                                           />
+
+
+
+                                </StackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </Grid>
+                <Grid Grid.Row="2">
+
+                    <Grid.RowDefinitions >
+                        <RowDefinition  Height="20"/>
+                      
+                        <RowDefinition />
+                    </Grid.RowDefinitions >
+                    <Label Grid.Row="0" Text="Mais Proximos"/>
+                    <RefreshView  Grid.Row="1" x:DataType="vm:ItemsViewModel" Command="{Binding LoadItemsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+                        <CollectionView x:Name="ItemsListView"
+                                    ItemsSource="{Binding Items}"
+                                    SelectionMode="None">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackLayout Padding="10" x:DataType="model:Item">
+                                            <Label Text="{Binding Text}" 
+                                LineBreakMode="NoWrap" 
+                                Style="{DynamicResource ListItemTextStyle}" 
+                                FontSize="16" />
+                                            <Label Text="{Binding Description}" 
+                                LineBreakMode="NoWrap"
+                                Style="{DynamicResource ListItemDetailTextStyle}"
+                                FontSize="13" />
+                                            <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer 
+                                    NumberOfTapsRequired="1"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ItemsViewModel}}, Path=ItemTapped}"		
+                                    CommandParameter="{Binding .}">
+                                            </TapGestureRecognizer> 
+                                        </StackLayout.GestureRecognizers>
+                                    </StackLayout>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </RefreshView>
+
+
+                </Grid>
             </Grid>
 
         </ScrollView>
